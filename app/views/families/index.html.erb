@@ -1,0 +1,14 @@
+<h1>Please select your family:</h1>
+
+<% @families.each do |post| %>
+  <h2><%= link_to post.name, family_path(post) %></h2>
+<% end %>
+
+<div class="new">
+  <h1><small>Don't see your family? Let's add it!</small></h1>
+  <%= form_for Family.new do |f| %>  
+  <p>Enter Family Name: <%= f.text_field :name %>
+    <%= f.submit "Submit" %>
+    <% end %>
+  </p>
+</div>

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  label: MyText
+  santa: MyString
+  bought: false
+  member_id: 
+
+two:
+  label: MyText
+  santa: MyString
+  bought: false
+  member_id: 

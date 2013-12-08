@@ -1,0 +1,17 @@
+<h1><%= @present.label %>'s Info</h1>
+<div id="notice"><%= notice %></div>
+<%= form_for([@family, @member, @present], html: {method: "patch"}) do |f| %>
+  <p>
+    <strong>Update your present:</strong>
+    <%= f.text_field :label %>
+  </p>
+  
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+
+<div class="footer">
+  <%= link_to 'Back', family_member_path(@family, @member) %>
+  | <%= link_to 'Destroy', family_member_path(@family, @member), method: :delete, data: { confirm: 'Are you sure?' } %>
+</div>

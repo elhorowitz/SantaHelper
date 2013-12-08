@@ -1,0 +1,23 @@
+<div class="new">
+  <%= form_for @family do |f| %>
+    <% if @family.errors.any? %>  
+      <div class="error_messages">
+        <h1>Oops...</h1> 
+        <ul>  
+          <% for message in @family.errors.full_messages %>  
+            <li><%= message %></li>  
+          <% end %>  
+        </ul>  
+      </div>  
+    <% end %>  
+  <h3>Please try again!</h3>
+    <p style="text-align: center;"> 
+      <strong>Enter your family's name:</strong>
+      <%= f.text_field :name %>
+    </p>
+    <p><%= f.submit %></p>
+  <p><% end %></p>
+</div>
+<div id="footer">
+  <%= link_to 'Back', families_path %>
+</div>

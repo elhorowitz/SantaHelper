@@ -1,0 +1,30 @@
+ 
+
+<div class="new"> 
+  <%= form_for([@family, @family.members.build]) do |f| %>
+    <% if @member.errors.any? %>  
+      <div class="error_messages">
+        <h1>Oops...</h1> 
+        <ul>  
+          <% for message in @member.errors.full_messages %>  
+            <li><%= message %></li>  
+          <% end %>  
+        </ul>  
+      </div>  
+    <% end %>  
+    
+    <h3>Please try again!</h3>
+    <p>
+      <strong>Pick a username:</strong>
+      <%= f.text_field :usrname %>
+    </p>
+    <p>
+      <strong>Pick a password:</strong>
+      <%= f.password_field :password %>
+    </p>
+    <p><%= f.submit %></p>
+  <% end %>
+</div>
+<div class="footer">
+  <%= link_to 'Back', family_path(@family) %>
+</div>

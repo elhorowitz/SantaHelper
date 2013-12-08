@@ -1,0 +1,196 @@
+html{
+  height: 100%;
+  width: 100%;
+}
+
+body { 
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+  width: 75%;
+  height: 100%;
+  background-image: url("christmas-wallpaper-by-cute-cuddly-cupcake.jpg");
+  background-size: contain;
+  background-repeat: repeat-y;
+  position: relative;
+  margin: 0 auto 0 auto;
+}
+
+@font-face {
+    font-family: 'FancyPants';
+    src: font-url('FancyPants.eot');
+    src: font-url('FancyPants.eot?iefix') format('eot'),
+         font-url('FancyPants.woff') format('woff'),
+         font-url('FancyPants.ttf') format('truetype'),
+         font-url('FancyPants.svg#webfont') format('svg');
+}
+
+h1 {
+  color: #333aaa;
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+  text-align: center;
+  font-variant: small-caps;
+  line-height: 50px;
+}
+
+h2, h3 {
+  text-align: center;
+  color: green;
+  font-family: "FancyPants";
+}
+
+p, ol, ul, td {
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+  font-size: 14px;
+  line-height: 18px;
+  text-align: center;
+  list-style-type: none;
+}
+
+pre {
+  background-color: #eee;
+  padding: 10px;
+  font-size: 11px;
+}
+
+h2 a {
+  &:hover {
+    font-size: 110%;
+  }
+}
+a {
+  text-decoration: none;
+  color: green;
+  &:hover {
+    color: red;
+  }
+}
+
+img {
+  position: relative;
+  margin: auto;
+}
+
+#container {
+  background-color: white;
+  width: 100%;
+  heigth: 100%;
+  border: 5px black solid;
+  border-radius:2em;
+  -webkit-border-radius:2em; /* Safari */
+}
+
+#header {
+  position: relative;
+  margin: 0 auto 0 auto;
+  text-align: center;
+  height: 100%;
+}
+
+#content {
+  padding: 25px;
+  height: 100%;
+}
+
+.new {
+  padding-top: 10px;
+}
+
+#famlist {
+  width: 100%;
+  padding: 10px 0px 40px 0px;
+  position: relative;
+  margin: auto;
+}
+
+#mylist {
+  width: 100%;
+  padding: 0px 0 10px 0;
+  border-top: 1px solid black;
+  position: relative;
+  margin: 10px auto 0px auto;
+}
+
+.list {
+  position: relative;
+  margin: 0 auto 0 auto;
+  width: 50%;
+}
+
+table {
+  width: 100%;
+  tr:nth-child(even) {background: #CCC};
+  tr:nth-child(odd) {background: #FFF};
+  border-collapse: collapse;
+}
+
+#mylist table {
+  tr:nth-child(4n+2) {background: #CCC};
+  tr:nth-child(4n+3) {background: #CCC};
+  tr:nth-child(4n+0) {background: #FFF};
+  tr:nth-child(4n+1) {background: #FFF};
+}
+
+.edit{
+  color: green;
+  &:hover {
+    color: red;
+  }
+}
+
+.footer {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  margin: 0 auto 0 auto;
+}
+
+.footer a{
+  text-decoration: none;
+  color: green;
+  &:hover {
+    color: black;
+    font-size: 100%;
+  }
+}
+
+div {
+  &.field, &.actions {
+    margin-bottom: 10px;
+  }
+}
+
+#notice {
+  color: green;
+}
+
+.field_with_errors {
+  position: relative;
+  margin: auto;
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+#error_explanation {
+  width: 450px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 0;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+  h2 {
+    text-align: left;
+    font-weight: bold;
+    padding: 5px 5px 5px 15px;
+    font-size: 12px;
+    margin: -7px;
+    margin-bottom: 0px;
+    background-color: #c00;
+    color: #fff;
+  }
+  ul li {
+    font-size: 12px;
+    list-style: square;
+  }
+}

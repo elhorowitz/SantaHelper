@@ -1,0 +1,23 @@
+<h1><%= @member.usrname %>'s Info</h1>
+
+<div class="new">
+<%= form_for([@family, @member], html: {method: "patch"}) do |f| %>
+  <p>
+    <strong>Insert/update your username:</strong>
+    <%= f.text_field :usrname %>
+  </p>
+  
+  <p>
+    <strong>Insert/update your a password:</strong>
+    <%= f.password_field :password %>
+  </p>
+  
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+</div>
+<div class="footer">
+  <%= link_to 'Back', family_member_path(@family, @member) %>
+  | <%= link_to 'Delete Me', family_member_path(@family, @member), method: :delete, data: { confirm: 'Are you sure?' } %>
+</div>

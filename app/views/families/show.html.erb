@@ -1,0 +1,22 @@
+<h1><big>The <%= @family.name %> Family</big></h1>
+
+<% if @family.members.any? %>
+  <div>
+    <% @family.members.each do |ppl| %>
+        <h2 style="text-align: center; font-variant: small-caps;"><%= link_to ppl.usrname, [@family, ppl], method: :get%></h2>
+    <% end %>
+  </div>
+<% end %>
+
+<div class="new">
+  <h1 style="line-height: 0px;"><small>...Don't see yourself? Let's fix that!</small></h1>
+  <%= form_for([@family, @family.members.build]) do |f| %>
+    <p><strong>Pick a username:</strong><%= f.text_field :usrname %></p>
+    <p><strong>Pick a password:</strong><%= f.password_field :password %></p>
+    <p><%= f.submit "Submit" %></p>
+  <% end %>
+</div>
+
+<div class="footer">
+  <%= link_to 'Back to All Families', families_path %>
+</div>

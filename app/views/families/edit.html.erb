@@ -1,0 +1,16 @@
+<h2>Update the <%= @family.name %> family's Info</h2>
+
+<div class="new"> 
+  <%= form_for :family, url: family_path(@family), method: :patch do |f| %>
+    <p>
+      <%= f.text_area :name %>
+    </p>
+    
+    <p>
+      <%= f.submit "Update" %>
+    </p>
+  <% end %>
+</div>
+<div id="footer">
+<%= link_to 'Back', family_path(@family) %>
+</div>

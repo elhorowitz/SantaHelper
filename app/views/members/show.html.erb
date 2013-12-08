@@ -1,0 +1,67 @@
+<div id="famlist">
+  <h1>The <%= @family.name %> Family's Wish List:</h1>
+    <table class="list">
+      <tr style="border-bottom: 1px solid black;">
+        <th style="width: 25%;">Who wants it?</th>
+        <th style="width: 40%;">What is it?</th>
+        <th style="width: 25%;">Who bought it?</th>
+        <th style="width: 10%;"></th>
+      </tr>
+      <% @family.members.each do |ppl| %>
+        <% ppl.presents.each do |gift| %>
+          <% if ppl != @member %>
+          <tr>
+            <td style="width: 25%;"><%= ppl.usrname %></td>
+            <td style="width: 40%;"><%= gift.label %></td>
+            <td style="width: 25%;"><%= if gift.bought then gift.santa end %></td>
+            <td style="width: 10%;"><%= form_for [@family, ppl, gift], method: :patch do |f| %>
+              <%= if gift.bought and gift.santa == @member.usrname then f.hidden_field :bought, :value => false elsif !gift.bought then f.hidden_field :bought, :value => true end %>
+              <%= if gift.bought and gift.santa == @member.usrname then f.hidden_field :santa, :value => nil elsif !gift.bought then f.hidden_field :santa, :value => @member.usrname end %>
+              <%= if gift.bought and gift.santa == @member.usrname then f.submit "jk..." elsif !gift.bought then f.submit "I Bought This!" end %>
+            <% end%>
+            </td>
+          </tr>
+      <% end end end %>
+    </table>
+  
+</div>
+<div id="mylist">
+  <h1>All <%= @member.usrname %> wants for Christmas is</h1>
+  <% if @member.presents.any? %>
+    <table class="list">
+      <tr style="border-bottom: 1px solid black;">
+        <th colspan='2'></th>
+      </tr>
+      <% @member.presents.each do |gift| %>
+      <tr>
+        <td style="width: 75%;"><%= gift.label %></td>
+        <td style="width: 25%;">(<code class="edit" onclick="document.getElementById('<%= gift.label %>').style.display='';">Edit</code> | <code><%= link_to 'Delete', family_member_present_path(@family, @member, gift), method: :delete, data: { confirm: 'Are you sure?' }%>)</code></td>
+      </tr>
+      <tr>
+        <td id="<%= gift.label %>" colspan="2" style="display: none; width: 100%; border-bottom: 1px solid black;"><%= form_for([@family, @member, gift], html: {method: "patch"}) do |f| %>
+          <p>
+            <strong>Edit this present:</strong>
+            <%= f.text_field :label %>
+            <%= f.submit "Update" %>
+            <% end %>
+          </p>
+        </td>
+      </tr>
+    <% end %>
+    </table>
+    <div class="new">
+      <p style="text-align: center;">Thought of something else?</p>
+  <% else %>
+    <p>...</p>
+    <div class="new">
+      <p>Nothing?! C'mon, you must want something!</p>
+  <% end %>
+      <%= form_for([@family, @member, @member.presents.build]) do |f| %>
+        <p><strong style="padding-right: 5px;">Add a present: </strong><%= f.text_field :label %> <%= f.submit "Submit" %></p>
+      <% end %>
+  </div>
+</div>
+<div class="footer">
+  <%= link_to 'Back to Family', family_path(@family) %>
+  | <%= link_to 'Delete Me', family_member_path(@family, @member), method: :delete, data: { confirm: 'Are you sure?' } %>
+</div>
