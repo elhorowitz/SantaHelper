@@ -1,0 +1,14 @@
+|*** Santa's Little Helper ***|
+
+
+
+Purpose: 
+This App was designed to make holiday shopping more organized by:
+- combining the holiday wishlists of everyone in your "family"
+- tracking who bought what for each "family" member
+- allowing members to create their own wishlists
+
+Specs: 
+- Ruby 2.0.0p247
+- Ruby on Rails 4.0.1
+- Postgres 9.3.1
