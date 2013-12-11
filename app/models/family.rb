@@ -5,7 +5,7 @@ class Family < ActiveRecord::Base
 	validates :name, presence: true, uniqueness: true
 	validates_format_of :name, :with => /\A[a-zA-Z0-9_]{2,30}\Z/
 	
-	#def to_param
-	#	name
-	#end
+	def to_param
+		name
+	end
 end

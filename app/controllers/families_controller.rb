@@ -14,7 +14,7 @@ class FamiliesController < ApplicationController
 	end
 	
 	def show
-		@family = Family.find(params[:id])
+		@family = Family.find_by_name(params[:id])
 	end
 	
 	def index
@@ -22,21 +22,21 @@ class FamiliesController < ApplicationController
 	end
 	
 	def edit
-		@family = Family.find(params[:id])
+		@family = Family.find_by_name(params[:id])
 	end
 	
 	def update
-		@family = Family.find(params[:id])
+		@family = Family.find_by_name(params[:id])
 		
 		if @family.update(fam_params)
-			redirect_to families_path
+			redirect_to @family
 			else
 			render 'edit'
 		end
 	end
 	
 	def destroy
-		@family = Family.find(params[:id])
+		@family = Family.find_by_name(params[:id])
 		@family.destroy
 		
 		redirect_to families_path
