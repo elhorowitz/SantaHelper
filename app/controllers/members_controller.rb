@@ -7,7 +7,7 @@ class MembersController < ApplicationController
 	end
 	
 	def create
-		@family = Family.find(params[:family_id])
+		@family = Family.find_by_name(params[:family_id])
 		@member = @family.members.create(mem_params)
 		
 		if @member.save
@@ -18,23 +18,23 @@ class MembersController < ApplicationController
 	end
 	
 	def show
-		@family = Family.find(params[:family_id])
-		@member = @family.members.find(params[:id])
+		@family = Family.find_by_name(params[:family_id])
+		@member = @family.members.find_by_usrname(params[:id])
 	end
 	
 	def index
-		@family = Family.find(params[:family_id])
+		@family = Family.find_by_name(params[:family_id])
 		@members = @family.members.all
 	end
 	
 	def edit
-		@family = Family.find(params[:family_id])
-		@member = @family.members.find(params[:id])
+		@family = Family.find_by_name(params[:family_id])
+		@member = @family.members.find_by_usrname(params[:id])
 	end
 	
 	def update
-		@family = Family.find(params[:family_id])
-		@member = @family.members.find(params[:id])
+		@family = Family.find_by_name(params[:family_id])
+		@member = @family.members.find_by_usrname(params[:id])
 		
 		if @member.update(mem_params)
 			redirect_to (:back)
@@ -44,8 +44,8 @@ class MembersController < ApplicationController
 	end
 	
 	def destroy
-		@family = Family.find(params[:family_id])
-		@member = @family.members.find(params[:id])
+		@family = Family.find_by_name(params[:family_id])
+		@member = @family.members.find_by_usrname(params[:id])
 		@member.destroy
 		
 		redirect_to @family
@@ -54,8 +54,8 @@ class MembersController < ApplicationController
 	private
 	
 	def authenticate
-		@family = Family.find(params[:family_id])
-		@member = @family.members.find(params[:id])
+		@family = Family.find_by_name(params[:family_id])
+		@member = @family.members.find_by_usrname(params[:id])
 		authenticate_or_request_with_http_basic do |username, password|
 		username == @member.usrname && password == @member.password
 		#username == "admin" && password == "1234"

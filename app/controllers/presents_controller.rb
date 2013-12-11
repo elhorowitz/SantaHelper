@@ -5,32 +5,32 @@ class PresentsController < ApplicationController
 	end
 	
 	def create
-		@family = Family.find(params[:family_id])
-		@member = @family.members.find(params[:member_id])
+		@family = Family.find_by_name(params[:family_id])
+		@member = @family.members.find_by_usrname(params[:member_id])
 		@present = @member.presents.create(pres_params)
 		redirect_to [@family, @member]
 	end
 	
 	def show
-		@family = Family.find(params[:family_id])
-		@member = @family.members.find(params[:member_id])
+		@family = Family.find_by_name(params[:family_id])
+		@member = @family.members.find_by_usrname(params[:member_id])
 		@present = @member.presents.find(params[:id])
 	end
 	
 	def index
-		@member = Family.find(params[:family_id]).members.find(params[:member_id])
+		@member = Family.find_by_name(params[:family_id]).members.find_by_usrname(params[:member_id])
 		@present = @member.presents.all
 	end
 	
 	def edit
-		@family = Family.find(params[:family_id])
-		@member = @family.members.find(params[:member_id])
+		@family = Family.find_by_name(params[:family_id])
+		@member = @family.members.find_by_usrname(params[:member_id])
 		@present = @member.presents.find(params[:id])
 	end
 	
 	def update
-		@family = Family.find(params[:family_id])
-		@member = @family.members.find(params[:member_id])
+		@family = Family.find_by_name(params[:family_id])
+		@member = @family.members.find_by_usrname(params[:member_id])
 		@present = @member.presents.find(params[:id])
 		if @present.update(pres_params)
 			redirect_to (:back)
@@ -40,8 +40,8 @@ class PresentsController < ApplicationController
 	end
 	
 	def destroy
-		@family = Family.find(params[:family_id])
-		@member = @family.members.find(params[:member_id])
+		@family = Family.find_by_name(params[:family_id])
+		@member = @family.members.find_by_usrname(params[:member_id])
 		@present = @member.presents.find(params[:id])
 		@present.destroy
 		redirect_to [@family, @member]

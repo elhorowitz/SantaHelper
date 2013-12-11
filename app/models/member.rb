@@ -7,4 +7,8 @@ class Member < ActiveRecord::Base
   validates :usrname, presence: true, uniqueness: true
   validates :password, presence: true, length: { minimum: 5}
   
+	def to_param
+		usrname
+	end
+  
 end
