@@ -7,5 +7,5 @@ SantaHelper::Application.routes.draw do
 			resources :presents
 		end
 	end
-  root to: 'welcome#index'
+  root to: 'families#index'
 end
