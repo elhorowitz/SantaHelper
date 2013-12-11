@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20131130214439) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "families", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -28,7 +31,7 @@ ActiveRecord::Schema.define(version: 20131130214439) do
     t.datetime "updated_at"
   end
 
-  add_index "members", ["family_id"], name: "index_members_on_family_id"
+  add_index "members", ["family_id"], name: "index_members_on_family_id", using: :btree
 
   create_table "presents", force: true do |t|
     t.text     "label"
@@ -39,7 +42,7 @@ ActiveRecord::Schema.define(version: 20131130214439) do
     t.datetime "updated_at"
   end
 
-  add_index "presents", ["member_id"], name: "index_presents_on_member_id"
+  add_index "presents", ["member_id"], name: "index_presents_on_member_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "name"
