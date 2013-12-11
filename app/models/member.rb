@@ -5,6 +5,7 @@ class Member < ActiveRecord::Base
   
   
   validates :usrname, presence: true, uniqueness: true
+  validates_format_of :usrname, :with => /\A[a-zA-Z0-9_]{2,30}\Z/
   validates :password, presence: true, length: { minimum: 5}
   
 	def to_param

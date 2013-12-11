@@ -2,6 +2,7 @@
 
 <% @families.each do |post| %>
   <h2><%= link_to post.name, family_path(post) %></h2>
+  <%= link_to 'Edit', edit_family_path(post) %>
 <% end %>
 
 <div class="new">
@@ -12,3 +13,4 @@
     <% end %>
   </p>
 </div>
+
