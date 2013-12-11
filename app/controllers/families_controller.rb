@@ -29,7 +29,7 @@ class FamiliesController < ApplicationController
 		@family = Family.find_by_name(params[:id])
 		
 		if @family.update(fam_params)
-			redirect_to [@family, @member]
+			redirect_to families_path
 			else
 			render 'edit'
 		end
